@@ -16,14 +16,24 @@ def printMinMax(nameList,priceList):
     maxName = ""
     minPrice = 99999
     minName = ""
+    avrgPrice = 0
 
     for index in range(len(nameList)):
+        avrgPrice += priceList[index]
         if priceList[index] > maxPrice:
             maxPrice = priceList[index]
             maxName = nameList[index]
         if priceList[index] < minPrice:
             minPrice = priceList[index]
             minName = nameList[index]
+
+    avrgPrice = avrgPrice / len(nameList)
+    
+    print()
+    print("Average Price")
+    print("=============")
+    print(avrgPrice)
+    print()
     print("Maximum")
     print("=======")
     print(maxName + " " + str(maxPrice))
@@ -40,12 +50,12 @@ print()
 # Driver Set up
 chromeOptions = Options()
 chromeOptions.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-chrome_driver = # Must be the path conatining chromdrive.exe
+chrome_driver = r"C:\Users\7stre\Desktop\Sean\Programming\chromedriver" # Must be the path conatining chromdrive.exe
 driver = webdriver.Chrome(chrome_driver, options=chromeOptions)
 driver.implicitly_wait(10) # the driver will wait up to 10 seconds for each element to apppear on the page before throwing an error
 
 ebayAdvancedSearchLink = "https://www.ebay.com/sch/ebayadvsearch?mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5337590774&customid=&toolid=10001"
-
+print('https://duckduckgo.com')
 driver.get(ebayAdvancedSearchLink)
 
 elem = driver.find_element_by_name("_nkw")
